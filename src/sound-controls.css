@@ -1,0 +1,8 @@
+.sound-label { display:block; font-size:12px; margin-bottom:9px; }
+#sound-pair { width:100%; padding:10px 12px; border:1px solid #cdd2dc; border-radius:6px; color:#303744; background:#fff; font:inherit; font-size:12px; }
+#sound-pair:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+.mute-control { display:flex; align-items:center; gap:8px; font-size:12px; margin-top:15px; }
+.mute-control input { accent-color:var(--blue); }
+.clip-links { display:flex; gap:18px; font-size:12px; margin:16px 0 0; }
+.clip-links a { color:var(--blue); text-decoration:none; }
+@media(max-width:800px) { .sound-section { grid-column:1/-1; } }

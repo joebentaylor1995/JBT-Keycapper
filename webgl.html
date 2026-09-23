@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#191919" />
+  <title>Keycap — interaction tester</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232c6aff'/%3E%3Cpath d='M16 8v16M8 16h16' stroke='white' stroke-width='5'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="identity"><span class="key-mark" aria-hidden="true">+</span><strong>Keycap</strong><span class="divider"></span><span class="subtitle">Interaction tester</span></div>
+    <a class="download" href="./keycap-switch.glb" download>Download GLB <span aria-hidden="true">↓</span></a>
+  </header>
+  <main>
+    <section class="stage" aria-label="Interactive keycap preview">
+      <div class="stage-heading"><span class="live-dot"></span><span id="load-state">Loading model…</span></div>
+      <canvas id="preview" tabindex="0" role="button" aria-label="Press the 3D keycap. Use Enter or Space, or click the keycap." aria-describedby="stage-hint"></canvas>
+      <div class="loading" id="loading"><span class="loader"></span><p>Preparing the keycap</p></div>
+      <div class="error" id="error" hidden><h2>Preview could not load</h2><p id="error-message"></p><button id="retry">Try again</button></div>
+      <div class="stage-footer"><p id="stage-hint">Move to tilt. Hover to feel the travel.<br><span>Click to press.</span></p><span class="keyboard-hint"><kbd>space</kbd> to press</span></div>
+    </section>
+    <aside class="inspector">
+      <div class="inspector-intro"><h1>Feel the switch.</h1><p>Frosted blue plastic.<br>One satisfying press.</p></div>
+      <button class="press-button" id="press" disabled>Press key <span aria-hidden="true">↧</span></button>
+      <section class="control-section sound-section" aria-labelledby="sound-heading">
+        <h2 id="sound-heading">Sound</h2>
+        <label class="sound-label" for="sound-pair">Sound pair</label>
+        <select id="sound-pair"><option value="random">Random matched pair</option></select>
+        <label class="control" for="sound-volume"><span>Volume</span><output id="sound-volume-value">65%</output><input id="sound-volume" type="range" min="0" max="100" step="1" value="65" /></label>
+        <label class="mute-control"><input type="checkbox" id="sound-mute" /> Mute sound</label>
+        <p class="surface-note" id="sound-status" aria-live="polite">Each press uses the down and up from the same number.</p>
+      </section>
+      <section class="control-section" aria-labelledby="motion-heading">
+        <h2 id="motion-heading">Motion</h2>
+        <label class="control" for="travel"><span>Full travel</span><output id="travel-value">3.4 mm</output><input id="travel" type="range" min="1" max="4" step="0.1" value="3.4" /></label>
+        <label class="control" for="hover"><span>Hover depth</span><output id="hover-value">0.45 mm</output><input id="hover" type="range" min="0" max="0.9" step="0.05" value="0.45" /></label>
+        <label class="control" for="tilt"><span>Pointer tilt</span><output id="tilt-value">6°</output><input id="tilt" type="range" min="0" max="12" step="1" value="6" /></label>
+      </section>
+      <section class="control-section" aria-labelledby="surface-heading">
+        <h2 id="surface-heading">Surface</h2>
+        <label class="control" for="transmission"><span>Translucency</span><output id="transmission-value">86%</output><input id="transmission" type="range" min="0" max="100" step="1" value="86" /></label>
+        <label class="control" for="frost"><span>Frost</span><output id="frost-value">30%</output><input id="frost" type="range" min="5" max="65" step="1" value="30" /></label>
+        <p class="surface-note">Live adjustments affect this preview. The download keeps the exported material.</p>
+      </section>
+      <button class="reset" id="reset">Reset adjustments</button>
+      <div class="readout"><div><span id="motion-state">At rest</span><strong id="depth">0.00 <small>mm</small></strong></div><div class="travel-meter"><span id="travel-meter"></span></div><p><span id="press-count">0 presses</span><span id="asset-detail">GLB · WebGL</span></p></div>
+      <p class="accessibility-note" id="reduced-note" hidden>Reduced motion is on. Pointer tilt and hover motion are disabled.</p>
+    </aside>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
