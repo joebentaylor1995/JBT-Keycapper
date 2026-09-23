@@ -2,6 +2,7 @@ import './style.css';
 import './sound-controls.css';
 import { KeyMotion } from './motion.js';
 import { KeySounds, soundNumbers, choosePair } from './sounds.js';
+import { exportClick } from './export-click.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('preview'), stage = canvas.parentElement;
@@ -106,6 +107,13 @@ $('reset').addEventListener('click',()=>{
   inside=false;pointer={x:0,y:0};Object.assign(settings,defaults);applySettings();$('press-count').textContent='0 presses';
 });
 $('retry').addEventListener('click',()=>location.reload());
+$('export-click').addEventListener('click', async () => {
+  const button = $('export-click'); button.disabled = true;
+  $('export-status').textContent = 'Exporting full click… Keep this tab visible.';
+  try { $('export-status').textContent = await exportClick({ frames, sounds, travel: settings.travel }); }
+  catch (error) { $('export-status').textContent = error.message; }
+  finally { button.disabled = false; }
+});
 function resize() {
   const dpr=Math.min(devicePixelRatio,2), r=stage.getBoundingClientRect();
   canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);
@@ -145,7 +153,7 @@ async function init(){
       }
     }));
     applySettings();resize();new ResizeObserver(resize).observe(stage);
-    ready=true;canvas.dataset.ready='true';$('press').disabled=false;$('loading').hidden=true;
+    ready=true;canvas.dataset.ready='true';$('press').disabled=false;$('export-click').disabled=false;$('loading').hidden=true;
     $('load-state').textContent='Rendered in Blender';$('asset-detail').textContent='Cycles · 1200px';
     requestAnimationFrame(animate);
   }catch(error){

@@ -42,6 +42,11 @@
         <p class="surface-note">Original lighting, reflections and frosted plastic. Fixed camera with a gentle screen tilt.</p>
         <p class="clip-links"><a href="./rendered/hover.mp4" download>Hover ↗</a> <a href="./rendered/press.mp4" download>Press ↗</a> <a href="./rendered/release.mp4" download>Release ↗</a></p>
       </section>
+      <section class="control-section" aria-labelledby="export-heading">
+        <h2 id="export-heading">Export</h2>
+        <button class="press-button" id="export-click" disabled>Export full click <span aria-hidden="true">↓</span></button>
+        <p class="surface-note" id="export-status" aria-live="polite">1200px video · press, hold and release. Uses your sound pair, volume and travel. MP4 or WebM depending on your browser.</p>
+      </section>
       <button class="reset" id="reset">Reset adjustments</button>
       <div class="readout"><div><span id="motion-state">At rest</span><strong id="depth">0.00 <small>mm</small></strong></div><div class="travel-meter"><span id="travel-meter"></span></div><p><span id="press-count">0 presses</span><span id="asset-detail">GLB · WebGL</span></p></div>
       <p class="accessibility-note" id="reduced-note" hidden>Reduced motion is on. Pointer tilt and hover motion are disabled.</p>

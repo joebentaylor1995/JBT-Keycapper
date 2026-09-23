@@ -30,6 +30,8 @@ The `dist/` directory is a self-contained static website: upload its contents to
 
 ## Interactions
 
+**Export full click** downloads a 1200 × 1200 video containing rest, press, a short hold, release and return to rest. It uses the current travel, sound pair, volume and mute settings. Random selection chooses one matched pair for the whole export. Encoding runs locally in the browser, with MP4 preferred and WebM as fallback; keep the tab visible until complete. The export uses the fixed Blender camera without pointer tilt.
+
 - Pointer movement gently tilts the rendered image (3° default); reduced-motion preferences disable this.
 - Hover over the keycap to depress it by 0.45 mm.
 - Hold the mouse/touch on the cap or **Press key** button, or hold Space/Enter with the canvas focused, for a 3.4 mm stroke. The cap stays down until release, returns fully, then resumes hover if the pointer remains over it. Pointer capture handles releases outside the button; window blur and cancelled touches release safely.
